@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+       <h1>[ 회원가입 폼 ]</h1>
+       <form th:action="@{/member/join}" th:object="${member}" th:method="post" onsubmit="return formCheck()">
+       
+       </form>
+</body>
+</html>

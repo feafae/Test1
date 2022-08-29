@@ -1,0 +1,44 @@
+-- 중고거래 사이트 예제
+
+
+-- 회원정보 테이블
+create table market_member (
+memberid VARCHAR2(20) PRIMARY key,
+memberpw VARCHAR2(100) not null,
+membername VARCHAR2(20) not null,
+phone VARCHAR2(20) not null,
+enabled number (1) DEFAULT 1,
+rolename VARCHAR2(20) DEFAULT 'Role_user'
+);
+
+-- 판매글 테이블
+create table market_board (
+boardnum number PRIMARY key,
+memberid VARCHAR2(20) not null,
+title VARCHAR2(200) not null,
+contents VARCHAR2(2000) not null,
+inputdate date DEFAULT sysdate,
+category VARCHAR2(50),
+soldout char(1) DEFAULT 'N',
+buyerid VARCHAR2(20)
+);
+
+--판매글 일련번호 시퀀스
+create SEQUENCE boardnum_seq;
+
+-- 리플 테이블
+create table market_reply (
+replynum NUMBER PRIMARY key,
+boardnum NUMBER,
+memberid VARCHAR2(20) not null,
+replytext VARCHAR2(500),
+inputdate date DEFAULT sysdate
+);
+
+--리플 foreign key 지정
+alter TABLE market_reply
+Add CONSTRAINT fk_boardnum
+FOREIGN key(boardnum) REFERENCES market_board(boardnum);
+
+--리플 일련번호 시퀀스
+create SEQUENCE replynum_seq
