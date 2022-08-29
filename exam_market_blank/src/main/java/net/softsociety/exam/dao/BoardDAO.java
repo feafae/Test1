@@ -10,7 +10,7 @@ import net.softsociety.exam.domain.Board;
 import net.softsociety.exam.domain.Reply;
 
 /**
- * °Ô½ÃÆÇ °ü·Ã ¸ÅÆÛ
+ * ã„´ã„¹ã„´ã„¹
  */
 @Mapper
 public interface BoardDAO {
